@@ -1,0 +1,109 @@
+---
+title: "BSA OF Data"
+author: "Nathan Kim"
+date: "2023-05-15"
+output:
+  pdf_document: default
+  html_document: default
+  
+# Author: Nathan Kim
+# Player Comparison Graph
+# Date: 05/15/2023
+  
+---
+```{r Outfielder Data Graph}
+library(ggplot2)
+
+of_data <- read.csv("/Users/natha/Dropbox/My PC (DESKTOP-HNFK7DB)/Downloads/MLB Asian Outfielders Check - Sheet1 (1).csv")
+
+attach(of_data)
+
+# Compare outfielders by career wOBA average, highlight Lee Jung Hoo's data
+
+ggplot(data= of_data) + aes(x=Name, y = wOBA)+ geom_point(col = ifelse(1:nrow(of_data) == 7, "red", "black"))+theme(axis.text.x = element_text(angle = 45, vjust=0.6))+geom_hline(yintercept = mean(wOBA, na.rm=TRUE))
+
+# Compare outfielders by career BABIP (Batting Average on Balls in Play) average
+
+ggplot(data= of_data) + aes(x=Name, y = BABIP)+ geom_point(col = ifelse(1:nrow(of_data) == 7, "red", "black")) + theme(axis.text.x = element_text(angle = 45, vjust=0.6)) +  geom_hline(yintercept = mean(BABIP, na.rm=TRUE))
+
+# Compare outfielders by career SO (Strike Out) / BB (Base on Balls) average ratio
+# Shifted outfielders' names away from their corresponding data points
+
+ggplot(data= of_data) + aes(x=At.Bats, y = SO/BB) + geom_point() +
+  geom_point(col = ifelse(1:nrow(of_data) == 7, "red", "black")) + 
+    theme(axis.text.x = element_text(angle = 45, vjust=0.6)) + 
+    geom_hline(yintercept=mean(of_data$SO/of_data$BB, na.rm=T))+
+    geom_vline(xintercept=mean(of_data$At.Bats,na.rm=T))+
+      geom_text(
+        label=of_data$Name,
+        nudge_x=50, nudge_y=0.05,
+        check_overlap=T,
+)
+
+# Compare outfielders by career FLD. (Fielding Percentage) average
+
+ggplot(data= of_data) + aes(x=Name, y = FLD.) + geom_point(size=5,col = ifelse(1:nrow(of_data) == 7, "red", "black")) + theme(axis.text.x = element_text(angle = 45, vjust=0.6)) + geom_hline(yintercept = mean(FLD., na.rm=TRUE))
+
+# Compare outfielders by career number of Errors committed
+
+ggplot(data= of_data) + aes(x=Name, y = Error)+ geom_point()+ geom_point(col = ifelse(1:nrow(of_data) == 7, "red", "black")) + theme(axis.text.x = element_text(angle = 45, vjust=0.6)) + geom_hline(yintercept = mean(Error, na.rm=TRUE))
+
+# Compare outfielders by career RF.G (Range Factor per Game) average
+
+ggplot(data= of_data) + aes(x=Name, y = RF.G) +  geom_point()+geom_point(col = ifelse(1:nrow(of_data) == 7, "red", "black")) + theme(axis.text.x = element_text(angle = 45, vjust=0.6)) + geom_hline(yintercept = mean(RF.G, na.rm=TRUE))
+```
+
+
+```{r Starting Pitcher Data Graph}
+
+library(ggplot2)
+
+sp_data <- read.csv("/Users/natha/MLB Asian SP Check - Sheet1.csv")
+
+attach(sp_data)
+
+# Compare Starting Pitchers by career K.9 (Strikeouts per 9 Innings) and BB.9 (Base on balls per 9 Innings) averages
+# Shifted outfielders' names away from their corresponding data points
+
+ggplot(data= sp_data) + aes(x=K.9, y = BB.9)+ geom_point(col = ifelse(1:nrow(sp_data) == 7, "red", "black")) +   xlim(5, 12)+ geom_hline(yintercept = mean(BB.9, na.rm=TRUE))+ theme(axis.text.x = element_text(angle = 45, vjust=0.6))+ geom_vline(xintercept=mean(K.9,na.rm=TRUE))+geom_text(
+    label=sp_data$Name,
+    nudge_x = 1
+)
+
+# Compare Starting Pitchers by career ERA (Earned Run Average) and WHIP (Walks and Hits per Inning Pitched) averages
+
+ggplot(data= sp_data) + aes(x=ERA, y = WHIP)+ geom_point(col = ifelse(1:nrow(sp_data) == 7, "red", "black")) + xlim(1.5, 4.5)+
+  geom_hline(yintercept = mean(WHIP, na.rm=TRUE))+
+    geom_vline(xintercept=mean(ERA,na.rm=TRUE))+geom_text(
+      label=sp_data$Name,
+      nudge_x = 0.45, nudge_y = 0.01
+)
+
+# Compare Starting Pitchers by career BABIP and BA (Batting Average allowed) averages
+
+ggplot(data= sp_data) + aes(x=BABIP, y = BA)+ geom_point(col = ifelse(1:nrow(sp_data) == 7, "red", "black")) + xlim(0.2, 0.4)+
+geom_hline(yintercept = mean(BA, na.rm=TRUE))+
+  geom_vline(xintercept=mean(BABIP,na.rm=TRUE))+geom_text(
+    label=sp_data$Name,
+    nudge_x = 0.04
+)
+
+# Compare Starting Pitchers by career Wild Pitches and HBP (Hit By pitches) allowed
+
+ggplot(data= sp_data) + aes(x=Wild.Pitch, y = HBP)+ geom_point(col = ifelse(1:nrow(sp_data) == 7, "red", "black"))+
+geom_hline(yintercept = mean(HBP, na.rm=TRUE))+
+  geom_vline(xintercept=mean(Wild.Pitch,na.rm=TRUE))+geom_text(
+    label=sp_data$Name,
+    nudge_x = 7.45
+)
+
+# Compare Starting Pitchers by career ERA and BA averages
+
+ggplot(data= sp_data) + aes(x=ERA, y = BA)+ geom_point(col = ifelse(1:nrow(sp_data) == 7, "red", "black")) + xlim(1.9, 4) +
+geom_hline(yintercept = mean(BA, na.rm=TRUE))+
+  geom_vline(xintercept=mean(ERA,na.rm=TRUE))+geom_text(
+    label=sp_data$Name,
+    nudge_x=0.3
+)
+```
+
