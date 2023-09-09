@@ -6,7 +6,7 @@ This project will analyze KBO (Korean Baseball Organization) and NPB (Nippon Pro
 The two players to be discussed are: Lee Jung Hoo (Center Fielder) for Kiwoom Heroes and Yoshinobu Yamamoto (Starting Pitcher) for the Orix Buffaloes
   We will discuss why those players have garnered much MLB interest and what makes them so unique compared to their peers
 
-Terminologies:
+# Terminologies:
 
 SP:
 - K/9: Strikeouts per 9 Innings
@@ -27,5 +27,6 @@ OF:
 - RF/G: Range Factor per Game: put-outs+assists over games played
 - Errors: Number of errors made
 
-Article Source: https://www.bruinsportsanalytics.com/post/mlb-asian-sensations
+# Article Source: 
+https://www.bruinsportsanalytics.com/post/mlb-asian-sensations
 
