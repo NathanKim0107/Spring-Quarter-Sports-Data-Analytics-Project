@@ -1,4 +1,4 @@
-# Spring-Quarter-Sports-Data-Analytics-Project
+# Spring Quarter Sports Data Analytics Project
 Upload R coding for Bruin Sports Analytics Project in Spring 2022 Quarter
 
 This project will analyze KBO (Korean Baseball Organization) and NPB (Nippon Professional Baseball) player data. We will compare two players from both organization with athletes who moved to the MLB
