@@ -30,3 +30,5 @@ OF:
 # Article Source: 
 https://www.bruinsportsanalytics.com/post/mlb-asian-sensations
 
+# Article Images
+![wOBA Plot]("C:\Users\natha\OneDrive\Documents\wOBA_Plot.jpeg")
