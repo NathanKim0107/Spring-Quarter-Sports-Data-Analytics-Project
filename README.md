@@ -31,4 +31,4 @@ OF:
 https://www.bruinsportsanalytics.com/post/mlb-asian-sensations
 
 # Article Images
-![wOBA Plot]("C:\Users\natha\OneDrive\Documents\wOBA_Plot.jpeg?raw=true "Title")
+[Image Link](https://github.com/NathanKim0107/Spring_Quarter_Sports_Data_Analytics_Project/tree/main/images)
